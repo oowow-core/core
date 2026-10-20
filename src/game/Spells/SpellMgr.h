@@ -294,7 +294,7 @@ class SpellMgr
         SpellSpellGroupMapBounds GetSpellSpellGroupMapBounds(uint32 spell_id) const
         {
             spell_id = GetFirstSpellInChain(spell_id);
-            return SpellSpellGroupMapBounds(mSpellSpellGroup.lower_bound(spell_id),mSpellSpellGroup.upper_bound(spell_id));
+            return mSpellSpellGroup.equal_range(spell_id);
         }
         uint32 IsSpellMemberOfSpellGroup(uint32 spellid, SpellGroup groupid) const
         {
@@ -309,7 +309,7 @@ class SpellMgr
 
         SpellGroupSpellMapBounds GetSpellGroupSpellMapBounds(SpellGroup group_id) const
         {
-            return SpellGroupSpellMapBounds(mSpellGroupSpell.lower_bound(group_id),mSpellGroupSpell.upper_bound(group_id));
+            return mSpellGroupSpell.equal_range(group_id);
         }
         void GetSetOfSpellsInSpellGroup(SpellGroup group_id, std::set<uint32>& foundSpells) const
         {
@@ -733,36 +733,36 @@ class SpellMgr
         }
 
     private:
-        SpellScriptTarget  mSpellScriptTarget;
-        SpellConeMap       mSpellCones;
-        SpellChainMap      mSpellChains;
-        SpellChainMapNext  mSpellChainsNext;
-        SpellLearnSkillMap mSpellLearnSkills;
-        SpellLearnSpellMap mSpellLearnSpells;
-        SpellTargetPositionMap mSpellTargetPositions;
-        SpellElixirMap     mSpellElixirs;
-        SpellThreatMap     mSpellThreatMap;
-        SpellProcEventMap  mSpellProcEventMap;
+        SpellScriptTarget       mSpellScriptTarget;
+        SpellConeMap            mSpellCones;
+        SpellChainMap           mSpellChains;
+        SpellChainMapNext       mSpellChainsNext;
+        SpellLearnSkillMap      mSpellLearnSkills;
+        SpellLearnSpellMap      mSpellLearnSpells;
+        SpellTargetPositionMap  mSpellTargetPositions;
+        SpellElixirMap          mSpellElixirs;
+        SpellThreatMap          mSpellThreatMap;
+        SpellProcEventMap       mSpellProcEventMap;
         SpellProcItemEnchantMap mSpellProcItemEnchantMap;
-        SpellEnchantChargesMap mSpellEnchantChargesMap;
-        SkillLineAbilityMap mSkillLineAbilityMapBySpellId;
-        SkillLineAbilityMap mSkillLineAbilityMapBySkillId;
-        SkillRaceClassInfoMap mSkillRaceClassInfoMap;
-        SpellPetAuraMap     mSpellPetAuraMap;
-        SpellAreaMap         mSpellAreaMap;
-        SpellAreaForQuestMap mSpellAreaForQuestMap;
-        SpellAreaForQuestMap mSpellAreaForActiveQuestMap;
-        SpellAreaForQuestMap mSpellAreaForQuestEndMap;
-        SpellAreaForAuraMap  mSpellAreaForAuraMap;
-        SpellAreaForAreaMap  mSpellAreaForAreaMap;
-        std::set<uint32>     mExistingSpellsSet;
+        SpellEnchantChargesMap  mSpellEnchantChargesMap;
+        SkillLineAbilityMap     mSkillLineAbilityMapBySpellId;
+        SkillLineAbilityMap     mSkillLineAbilityMapBySkillId;
+        SkillRaceClassInfoMap   mSkillRaceClassInfoMap;
+        SpellPetAuraMap         mSpellPetAuraMap;
+        SpellAreaMap            mSpellAreaMap;
+        SpellAreaForQuestMap    mSpellAreaForQuestMap;
+        SpellAreaForQuestMap    mSpellAreaForActiveQuestMap;
+        SpellAreaForQuestMap    mSpellAreaForQuestEndMap;
+        SpellAreaForAuraMap     mSpellAreaForAuraMap;
+        SpellAreaForAreaMap     mSpellAreaForAreaMap;
+        std::set<uint32>        mExistingSpellsSet;
 
         // SPELL GROUPS
-        SpellSpellGroupMap mSpellSpellGroup;
-        SpellGroupSpellMap mSpellGroupSpell;
-        SpellGroupStackMap   mSpellGroupStack;
+        SpellSpellGroupMap      mSpellSpellGroup;
+        SpellGroupSpellMap      mSpellGroupSpell;
+        SpellGroupStackMap      mSpellGroupStack;
         // SpellEntry
-        SpellEntryMap      mSpellEntryMap;
+        SpellEntryMap           mSpellEntryMap;
 };
 
 #define sSpellMgr SpellMgr::Instance()

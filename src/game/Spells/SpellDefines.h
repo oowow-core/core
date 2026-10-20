@@ -19,6 +19,36 @@
 
 #include "Common.h"
 
+enum SpellEffectIndex
+{
+    EFFECT_INDEX_0 = 0,
+    EFFECT_INDEX_1 = 1,
+    EFFECT_INDEX_2 = 2
+};
+
+#define MAX_EFFECT_INDEX 3
+
+enum SpellFamily
+{
+    SPELLFAMILY_GENERIC     = 0,
+    SPELLFAMILY_UNK1        = 1, // events, holidays
+    // 2 - unused
+    SPELLFAMILY_MAGE        = 3,
+    SPELLFAMILY_WARRIOR     = 4,
+    SPELLFAMILY_WARLOCK     = 5,
+    SPELLFAMILY_PRIEST      = 6,
+    SPELLFAMILY_DRUID       = 7,
+    SPELLFAMILY_ROGUE       = 8,
+    SPELLFAMILY_HUNTER      = 9,
+    SPELLFAMILY_PALADIN     = 10,
+    SPELLFAMILY_SHAMAN      = 11,
+    SPELLFAMILY_UNK2        = 12,
+    SPELLFAMILY_POTION      = 13,
+    // 14 - unused
+    SPELLFAMILY_DEATHKNIGHT = 15,
+    // 16 - unused
+    SPELLFAMILY_UNK3        = 17
+};
 
 enum SpellTarget
 {
@@ -189,8 +219,6 @@ enum SpellHitType
     SPELL_HIT_TYPE_CRIT                 = 0x02,
     SPELL_HIT_TYPE_HIT_DEBUG            = 0x04,
     SPELL_HIT_TYPE_SPLIT                = 0x08,
-    SPELL_HIT_TYPE_VICTIM_IS_ATTACKER   = 0x10,
-    SPELL_HIT_TYPE_ATTACK_TABLE_DEBUG   = 0x20
 };
 
 enum SpellDmgClass
